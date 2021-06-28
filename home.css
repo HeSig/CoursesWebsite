@@ -3,3 +3,8 @@
 html *{
   font-family: 'Roboto', sans-serif;
 }
+
+#CourseMenu{
+  background-color: lightblue;
+  padding-left: 500px;
+}
