@@ -21,8 +21,6 @@ function getCourse(index){
 
 function addDateToForm(){
   document.getElementById("courseDate").value = document.getElementById("dates").value;
-
-
   initForm();
 }
 
@@ -71,7 +69,7 @@ function addCompanyForm(){
   cphone.id="cphone";
   cphone.name="cphone";
 
-    cphone.value ="12345";
+  cphone.value ="12345";
   cphone.required = true;
   var lcphone = document.createElement("label");
   lcphone.for = "cphone";
@@ -82,7 +80,7 @@ function addCompanyForm(){
   cemail.id="cemail";
   cemail.name="cemail";
 
-    cemail.value ="test@test.se";
+  cemail.value ="test@test.se";
   cemail.required = true;
   var lcemail = document.createElement("label");
   lcemail.for = "cemail";
@@ -107,6 +105,9 @@ function addCompanyForm(){
 var participantCount = 0;
 
 function addPersonForm(){
+
+  if(document.getElementById("submitButton") != null)document.getElementById("submitButton").remove();
+
   participantCount++;
   var frm = document.getElementById("contactForm");
 
@@ -204,6 +205,11 @@ function addPersonForm(){
     ptpbtn.appendChild(btn);
     ptpbtn.appendChild(rmvbtn);
   }
+  var submitButton = document.createElement("input");
+  submitButton.type ="submit";
+  submitButton.id = "submitButton";
+  submitButton.value = "submit";
+  ptpbtn.appendChild(submitButton);
 }
 
 function removeLastParticipant(){

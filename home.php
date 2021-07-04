@@ -30,7 +30,7 @@
         //echo '<option>' .$a[0].'</option>';
       }
       $a = json_encode($a);
-      $name1 = $row1['name'];
+      $name1 = $row1['courseName'];
       $name2 = array($name1);
       echo '<script>addCourse('.$name2.', '.$a.');</script>';
       echo '<option>' .$name2[0]. '</option>';
@@ -49,25 +49,14 @@
   <!--
   Date buttons go here
 -->
+<div id="DateButtons">
+
+</div>
 
 <form id="contactForm" method="post" action="/submit.php">
-  <!--<label for="cname">Company name:</label><br>
-  <input type="text" id="cname" name="cname" required><br> -->
-  <!--<label for="cphone">Company phone:</label><br>
-  <input type="text" id="cphone" name="cphone" required><br> -->
-  <!--<label for="cemail">Company email:</label><br>
-  <input type="text" id="cemail" name="cemail" required><br> -->
-  <!--<label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" required><br> -->
-  <!--<label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" required><br> -->
-  <!--<label for="pemail">Personal email:</label><br>
-  <input type="email" id="pemail" name="pemail" required><br> -->
-  <!--<label for="pphone">Personal phone:</label><br>
-  <input type="text" id="pphone" name="pphone" required><br> -->
-  <input type="text" id="courseId" name="courseId" value="" required>
-  <input type="text" id="courseDate" name="courseDate" value="" required>
-  <input type="submit" value="submit">
+  <input type="text" id="courseId" name="courseId" value="" required hidden>
+  <input type="text" id="courseDate" name="courseDate" value="" required hidden>
+  <!--<input type="submit" value="submit"> -->
 </form>
 <div id="ParticipantButtons"> </div>
 </body>
