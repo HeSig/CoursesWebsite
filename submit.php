@@ -74,5 +74,5 @@ for($i = 0; $i < $size; $i++){
       echo "Participant already registered";
     }
   }
-header("Location:done.php");
+header("Location:complete.php");
   ?>
