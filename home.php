@@ -14,32 +14,32 @@
   <script language="JavaScript" type="text/javascript" src="home.js"> </script>
 </head>
 <body>
-
-  <label for="courses">Choose a course: </label>
-  <select id="courses" onclick="updateDateList()">
-    <?php
-    $sqli1 = "SELECT * from course Order By id";
-    $result1 = mysqli_query($con, $sqli1);
-    while($row1 = mysqli_fetch_array($result1)){
-      $id = $row1['id'];
-      $sqli2 = "SELECT date FROM schedule WHERE course = $id";
-      $result2 = mysqli_query($con, $sqli2);
-      $a=array();
-      while($row2 = mysqli_fetch_array($result2)){
-        array_push($a, $row2['date']);
-        //echo '<option>' .$a[0].'</option>';
+  <div id="courseDiv">
+    <h1>Choose a course: </h1>
+    <select id="courses" onclick="updateDateList()">
+      <?php
+      $sqli1 = "SELECT * from course Order By id";
+      $result1 = mysqli_query($con, $sqli1);
+      while($row1 = mysqli_fetch_array($result1)){
+        $id = $row1['id'];
+        $sqli2 = "SELECT date FROM schedule WHERE course = $id";
+        $result2 = mysqli_query($con, $sqli2);
+        $a=array();
+        while($row2 = mysqli_fetch_array($result2)){
+          array_push($a, $row2['date']);
+          //echo '<option>' .$a[0].'</option>';
+        }
+        $a = json_encode($a);
+        $name1 = $row1['courseName'];
+        $name2 = array($name1);
+        echo '<script>addCourse('.$name2.', '.$a.');</script>';
+        echo '<option>' .$name2[0]. '</option>';
       }
-      $a = json_encode($a);
-      $name1 = $row1['courseName'];
-      $name2 = array($name1);
-      echo '<script>addCourse('.$name2.', '.$a.');</script>';
-      echo '<option>' .$name2[0]. '</option>';
-    }
-    ?>
-  </select>
-
-  <label for="dates">Choose a date: </label>
-  <select id="dates" onclick="addDateToForm()">
+      ?>
+    </select>
+  </div>
+  <label for="dates" hidden>Choose a date: </label>
+  <select id="dates" onclick="addDateToForm()" hidden>
 
   </select>
   <?php
@@ -49,7 +49,7 @@
   <!--
   Date buttons go here
 -->
-<div id="DateButtons">
+<div id="DateButtons" onclick="addDateToForm()">
 
 </div>
 

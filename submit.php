@@ -26,13 +26,16 @@ for($i = 0; $i < $size; $i++){
   //echo $phone[$i]."<br>";
 }
 //Get course ID
-$sqli1 = 'SELECT id FROM COURSE WHERE name ="' .$courseName.'"';
+//echo 'SELECT id FROM COURSE WHERE courseName ="' .$courseName.'"';
+$sqli1 = 'SELECT id FROM COURSE WHERE courseName ="' .$courseName.'"';
 $result1 = mysqli_query($con, $sqli1);
 $courseId = mysqli_fetch_array($result1)[0];
 
 //Get schedule ID
-$sqli1 = 'SELECT id FROM schedule where date = "'.$courseDate.'" AND course = '.$courseId;
+//echo 'SELECT scheduleId FROM schedule where date = "'.$courseDate.'" AND course = '.$courseId.'';
+$sqli1 = 'SELECT scheduleId FROM schedule where date = "'.$courseDate.'" AND course = '.$courseId;
 $result1 = mysqli_query($con, $sqli1);
+
 $scheduleId = mysqli_fetch_array($result1)[0];
 
 //Get company name
@@ -48,30 +51,28 @@ $sqli1 = 'SELECT id FROM company WHERE name = "'.$companyName.'"';
 $result1 = mysqli_query($con, $sqli1);
 $companyId = mysqli_fetch_array($result1)[0];
 
-
 for($i = 0; $i < $size; $i++){
   $sqli1 = 'SELECT * FROM participant WHERE email = "'.$email[$i].'"';
   $result1 = mysqli_query($con, $sqli1);
   $res = mysqli_fetch_array($result1);
   if($res == null){
-      $sqli1 = 'INSERT INTO participant (companyId, fname, lname, phone, email) VALUES ('.$companyId.',
-        "'.$firstName[$i].'", "'.$lastName[$i].'", '.$phone[$i].', "'.$email[$i].'")';
-        $result1 = mysqli_query($con, $sqli1);
-        $sqli1 = 'SELECT * FROM participant WHERE email = "'.$email[$i].'"';
-        $result1 = mysqli_query($con, $sqli1);
-        $res = mysqli_fetch_array($result1);
-      }
-      $participantId = $res[0];
-
-      $sqli1 = 'SELECT * FROM participation WHERE schedule = '.$scheduleId.' AND participant = '.$participantId;
+    $sqli1 = 'INSERT INTO participant (companyId, fname, lname, phone, email) VALUES ('.$companyId.',
+      "'.$firstName[$i].'", "'.$lastName[$i].'", '.$phone[$i].', "'.$email[$i].'")';
+      $result1 = mysqli_query($con, $sqli1);
+      $sqli1 = 'SELECT * FROM participant WHERE email = "'.$email[$i].'"';
       $result1 = mysqli_query($con, $sqli1);
       $res = mysqli_fetch_array($result1);
-      if($res == null){
-        $sqli1 = 'INSERT INTO participation (schedule, participant) VALUES ('.$scheduleId.', '.$participantId.')';
-        $result1 = mysqli_query($con, $sqli1);
-      }else{
-        echo "Participant already registered";
-      }
-      header("Location:done.php");
     }
-    ?>
+    $participantId = $res[0];
+    $sqli1 = 'SELECT * FROM participation WHERE schedule = '.$scheduleId.' AND participant = '.$participantId;
+    $result1 = mysqli_query($con, $sqli1);
+    $res = mysqli_fetch_array($result1);
+    if($res == null){
+      $sqli1 = 'INSERT INTO participation (schedule, participant) VALUES ('.$scheduleId.', '.$participantId.')';
+      $result1 = mysqli_query($con, $sqli1);
+    }else{
+      echo "Participant already registered";
+    }
+  }
+header("Location:done.php");
+  ?>
