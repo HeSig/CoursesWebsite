@@ -1,6 +1,9 @@
 # CoursesWebsite
+This application is a simple website meant to 
+
 
 # Purpose
 This application is a work sample.
 
-# How to install
+# SETUP
+Download the code and save it 
