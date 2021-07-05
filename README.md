@@ -1,5 +1,5 @@
 # CoursesWebsite
-This application is a simple website meant to 
+This application is a simple website meant to allow members of companies to register for various courses, and to let the hosts of CoursesWebsite to check the participants.
 
 
 # Purpose
