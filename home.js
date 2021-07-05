@@ -1,5 +1,6 @@
 var courseList=new Array;
 
+
 function addCourse(name, dates){
   var Course = new Object();
   Course.name = name[0];
@@ -8,7 +9,6 @@ function addCourse(name, dates){
     Course.dates.push(dates[i]);
   }
   courseList.push(Course);
-
 }
 
 function getCourses(){
@@ -20,7 +20,6 @@ function getCourse(index){
 }
 
 function addDateToForm(){
-  //document.getElementById("courseDate").value = document.getElementById("dates").value;
   initForm();
   hideButtons();
 }
@@ -40,6 +39,7 @@ function updateDateList(){
   buttonHeader.innerHTML = "Choose a date: <br>";
   document.getElementById("DateButtons").appendChild(buttonHeader);
   for(var i = 0; i < tmp.length; i++){
+    //Create new date button
     var opt = document.createElement("option");
     opt.value = tmp[i];
     opt.innerHTML = tmp[i];
@@ -50,7 +50,6 @@ function updateDateList(){
     scheduleButton.id = tmp[i];
     scheduleButton.className = "ScheduleButton";
     var val = tmp[i];
-    //scheduleButton.onclick = function() {pasteDate(val)};
     scheduleButton.addEventListener("click", pasteDate);
     document.getElementById("DateButtons").appendChild(scheduleButton);
   }
@@ -58,7 +57,6 @@ function updateDateList(){
   document.getElementById("courseId").value = document.getElementById("courses").value;
   document.getElementById("courseDate").value = "";
 }
-
 
 function pasteDate(event){
   var clickedElement = event.target;
@@ -73,7 +71,6 @@ function initForm(){
     addPersonForm();
   }
 }
-
 
 function addCompanyForm(){
   var companyDiv = document.createElement("div");
@@ -119,9 +116,6 @@ function addCompanyForm(){
   lcemail.for = "cemail";
   lcemail.className = "Label";
   lcemail.innerHTML ="Company email: ";
-
-
-
 
   var column = document.createElement("div");
   column.id = "ccolumn1";
@@ -267,7 +261,6 @@ function addPersonForm(){
     btn.innerHTML  ="+ Add a participant";
     btn.id = "AddParticipant";
     btn.className = "participantButton";
-    //btn.onClick = addPersonForm();
     btn.onclick = function(){
       addPersonForm();
     }

@@ -42,9 +42,6 @@
   <select id="dates" onclick="addDateToForm()" hidden>
 
   </select>
-  <?php
-  //echo '<script> updateDateList() </script>';
-  ?>
 
   <!--
   Date buttons go here
